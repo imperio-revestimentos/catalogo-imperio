@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Império | Revestimentos e Cubas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --card-bg: #121212;
+            --accent-gold: #c5a059;
+            --text-gray: #a0a0a0;
+            --whatsapp-color: #25d366;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-dark); color: #fff; line-height: 1.6; overflow-x: hidden; }
+
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 5%; background: rgba(0, 0, 0, 0.95);
+            position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #222;
+        }
+        .logo-box h1 { font-size: 1.4rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 300; }
+        
+        .hero {
+            height: 35vh; display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7), var(--bg-dark)), 
+                        url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1600');
+            background-size: cover; background-position: center; padding: 20px;
+        }
+
+        /* --- FILTROS --- */
+        .filter-section { padding: 30px 5% 10px; background: #0a0a0a; border-bottom: 1px solid #1a1a1a; text-align: center; }
+        .filter-group { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; }
+        .filter-label { display: block; font-size: 0.65rem; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 8px; letter-spacing: 2px; }
+        .btn-filter { background: transparent; border: 1px solid #333; color: var(--text-gray); padding: 8px 15px; cursor: pointer; font-size: 0.75rem; transition: 0.3s; text-transform: uppercase; }
+        .btn-filter:hover { border-color: var(--accent-gold); color: #fff; }
+        .btn-filter.active { background: #fff; color: #000; border-color: #fff; font-weight: bold; }
+
+        /* --- GRID --- */
+        .catalogo-container { padding: 40px 5%; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
+        .card { background: var(--card-bg); border: 1px solid #222; border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; transition: 0.4s; }
+        .card.hide { display: none; }
+        .card:hover { transform: translateY(-8px); border-color: #555; }
+
+        /* CARD PRIORITÁRIO */
+        .card-prime { border: 2px solid var(--accent-gold); background: linear-gradient(145deg, #1a1a1a, #000); text-align: center; padding: 40px 20px; justify-content: center; }
+        .card-prime h2 { color: var(--accent-gold); font-size: 1.5rem; margin-bottom: 15px; letter-spacing: 2px; }
+        .btn-prime { background: var(--accent-gold); color: #000; padding: 12px 25px; text-decoration: none; font-weight: bold; font-size: 0.8rem; display: inline-block; margin-top: 15px; }
+
+        .card-img { height: 320px; background-size: cover; background-position: center; background-color: #1a1a1a; }
+        .card-content { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
+        .card-content h3 { font-size: 0.9rem; margin-bottom: 8px; color: #eee; text-transform: uppercase; }
+        .card-content p { color: var(--text-gray); font-size: 0.8rem; margin-bottom: 20px; flex-grow: 1; }
+        .btn-whats { text-align: center; background: transparent; color: #fff; border: 1px solid #444; padding: 10px; text-decoration: none; font-size: 0.75rem; font-weight: bold; transition: 0.3s; }
+        .btn-whats:hover { background: #fff; color: #000; }
+
+        .whats-float { position: fixed; bottom: 30px; right: 30px; background: var(--whatsapp-color); width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 9999; }
+        .whats-float svg { width: 30px; fill: white; }
+        footer { text-align: center; padding: 40px; border-top: 1px solid #1a1a1a; font-size: 0.7rem; color: #444; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-box"><h1>IMPÉRIO</h1></div>
+        <a href="https://wa.me/5564999070069" style="color:var(--accent-gold); text-decoration:none; font-size: 0.7rem; border: 1px solid var(--accent-gold); padding: 8px 15px;">CONTATO</a>
+    </header>
+
+    <section class="hero">
+        <h2>Atelier de Concreto</h2>
+        <p>REVESTIMENTOS E CUBAS EXCLUSIVAS</p>
+    </section>
+
+    <section class="filter-section">
+        <span class="filter-label">Filtrar por Categoria</span>
+        <div class="filter-group" id="cat-filters">
+            <button class="btn-filter active" onclick="filterSelection('all', this)">Todos</button>
+            <button class="btn-filter" onclick="filterSelection('cuba', this)">Cubas</button>
+            <button class="btn-filter" onclick="filterSelection('revestimento', this)">Revestimentos</button>
+            <button class="btn-filter" onclick="filterSelection('rockface', this)">Rock Face</button>
+            <button class="btn-filter" onclick="filterSelection('patagonia', this)">Série Patagônia</button>
+        </div>
+        <span class="filter-label">Estilo / Cor</span>
+        <div class="filter-group" id="style-filters">
+            <button class="btn-filter active" onclick="filterColor('all', this)">Todas Cores</button>
+            <button class="btn-filter" onclick="filterColor('cinza', this)">Cinza</button>
+            <button class="btn-filter" onclick="filterColor('ferrugem', this)">Ferrugem</button>
+            <button class="btn-filter" onclick="filterColor('amadeirado', this)">Amadeirado</button>
+            <button class="btn-filter" onclick="filterColor('exotico', this)">Exóticos</button>
+        </div>
+    </section>
+
+    <main class="catalogo-container">
+        <div class="grid">
+            
+            <!-- CARD 0: PRIORITÁRIO PERSONALIZADO -->
+            <div class="card card-prime item all">
+                <h2>SOLUÇÕES SOB MEDIDA</h2>
+                <p>Criamos projetos exclusivos com medidas, cores e texturas exatas para o seu ambiente. Fale com um especialista.</p>
+                <a href="https://wa.me/5564999070069" class="btn-prime">PEDIR ORÇAMENTO</a>
+            </div>
+
+            <!-- --- ITENS ORIGINAIS (1-10) --- -->
+            <div class="card item cuba cinza" data-color="cinza">
+                <div class="card-img" style="background-image: url('imagens/cuba-cinza.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Cuba Oval Concreto Cinza</h3><p>48x33x12.5 - Minimalista.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+            <div class="card item cuba cinza" data-color="cinza">
+                <div class="card-img" style="background-image: url('imagens/cuba-mesclada.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Cuba Retangular Mesclada</h3><p>48x33x12.5 - Estilo industrial premium.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+            <div class="card item cuba ferrugem" data-color="ferrugem">
+                <div class="card-img" style="background-image: url('imagens/cuba-preta.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Cuba Oval Ferrugem</h3><p>48x33x12.5 - Design rústico artesanal.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+            <div class="card item cuba cinza ferrugem" data-color="cinza ferrugem">
+                <div class="card-img" style="background-image: url('imagens/cuba-cinza-ferrugem.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Cuba Circular Mesclada</h3><p>38x38x12.5 - Rústica.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+            <div class="card item cuba cinza" data-color="cinza">
+                <div class="card-img" style="background-image: url('imagens/cuba-mesclada-clara.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Cuba Retangular Loft</h3><p>48x33x12.5 - Cores claras e suaves.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+            <div class="card item revestimento ferrugem" data-color="ferrugem">
+                <div class="card-img" style="background-image: url('imagens/revestimento-verde.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Revestimento Jade Ferrugem</h3><p>50x50 - Textura rica.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+            <div class="card item rockface cinza" data-color="cinza">
+                <div class="card-img" style="background-image: url('imagens/rockface-marrom.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Rock Face Marrom</h3><p>29x10 - Pedras naturais.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+            <div class="card item rockface cinza" data-color="cinza">
+                <div class="card-img" style="background-image: url('imagens/rockface-branco.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Rock Face Branco</h3><p>29x10 - Sofisticado.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+            <div class="card item rockface ferrugem" data-color="ferrugem">
+                <div class="card-img" style="background-image: url('imagens/rockface-preto.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Rock Face Oxidado</h3><p>29x10 - Estilo brutalista.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+            <div class="card item revestimento ferrugem" data-color="ferrugem">
+                <div class="card-img" style="background-image: url('imagens/revestimento-preto.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Placa de Revestimento</h3><p>50x50 - Nobre e atemporal.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+
+            <!-- --- NOVOS ITENS DAS FOTOS (11-21) --- -->
+            <div class="card item patagonia rockface exotico" data-color="exotico">
+                <div class="card-img" style="background-image: url('imagens/patagonia-fossil.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Patagônia Fossil Face</h3><p>Revestimento com pigmentação vulcânica e veios terrosos. Peça de colecionador.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+            <div class="card item revestimento cinza" data-color="cinza">
+                <div class="card-img" style="background-image: url('imagens/revestimento-preto-efeito.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Revestimento Preto Detalhado</h3><p>50x50 - Painel arquitetônico com perfurações artísticas para jogos de luz.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+            <div class="card item revestimento cinza" data-color="cinza">
+                <div class="card-img" style="background-image: url('imagens/revestimento-cinza.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Revestimento Cinza Concreto</h3><p>50x50 - Concreto polido acetinado. Pureza em forma de placa.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+            <div class="card item cuba ferrugem" data-color="ferrugem">
+                <div class="card-img" style="background-image: url('imagens/cuba-cinza-efeito.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Cuba Industrial Frame</h3><p>48x33x12.5 - Cuba retangular com detalhes oxidados e suporte em latão nobre.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+            <div class="card item cuba amadeirado" data-color="amadeirado">
+                <div class="card-img" style="background-image: url('imagens/cuba-madeira.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Cuba Organic Wood Oval</h3><p>48x33x12.5 - Textura e pigmentação inspirada em madeiras milenares.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+            <div class="card item patagonia rockface cinza" data-color="cinza">
+                <div class="card-img" style="background-image: url('imagens/patagonia-cinza.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Patagônia Rock Sculpt</h3><p>Escultura em concreto bruto. Relevo agressivo e potente.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+            <div class="card item cuba exotico" data-color="exotico">
+                <div class="card-img" style="background-image: url('imagens/cuba-verde.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Cuba Botanic Jade</h3><p>38x38x12.5 - Verde esmeralda vitrificado. Luxo orgânico para o banheiro.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+            <div class="card item cuba exotico ferrugem" data-color="exotico ferrugem">
+                <div class="card-img" style="background-image: url('imagens/cuba-azul.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Cuba Azure Rust</h3><p>48x33x12.5 - Azul cerúleo mesclado com oxidação natural. Peça única.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+            <div class="card item cuba exotico cinza" data-color="exotico cinza">
+                <div class="card-img" style="background-image: url('imagens/cub-mar.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Cuba Marble Ocean</h3><p>48x33x12.5 - Efeito marmorizado em tons de azul profundo e carvão.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+            <div class="card item cuba amadeirado" data-color="amadeirado">
+                <div class="card-img" style="background-image: url('imagens/cuba-redonda.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Cuba Bowl Timber</h3><p>38x38x12.5 - Bowl redondo com textura tátil de madeira nobre.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+            <div class="card item cuba amadeirado" data-color="amadeirado">
+                <div class="card-img" style="background-image: url('imagens/cuba-retangular.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Cuba Cubic Espresso</h3><p>48x33x12.5 - Design retangular moderno com acabamento amadeirado escuro.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+
+        </div>
+    </main>
+
+    <a href="https://wa.me/5564999070069" class="whats-float"><svg viewBox="0 0 32 32"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.733 5.476 2.017 7.783l-2.017 7.217 7.392-1.941c2.246 1.221 4.82 1.941 7.608 1.941 8.837 0 16-7.163 16-16s-7.163-16-16-16zM24.038 23.012c-0.34 0.957-1.689 1.761-2.791 2.003-0.758 0.165-1.747 0.295-4.992-1.056-4.148-1.729-6.828-5.945-7.034-6.223-0.207-0.278-1.681-2.235-1.681-4.254s1.047-3.008 1.42-3.4c0.372-0.393 0.814-0.491 1.082-0.491s0.536 0.003 0.771 0.016c0.244 0.013 0.57-0.092 0.892 0.684 0.325 0.785 1.111 2.71 1.209 2.91 0.098 0.198 0.163 0.43 0.031 0.694s-0.198 0.43-0.393 0.661c-0.196 0.231-0.41 0.386-0.584 0.593s-0.378 0.419-0.162 0.793c0.216 0.374 0.96 1.583 2.062 2.564 1.417 1.261 2.613 1.654 2.986 1.84s0.587 0.147 0.806-0.106c0.221-0.252 0.941-1.092 1.196-1.467s0.51-0.313 0.859-0.18c0.35 0.133 2.219 1.044 2.6 1.233s0.635 0.281 0.727 0.44c0.092 0.158 0.092 0.916-0.248 1.873z"></path></svg></a>
+    <footer>&copy; 2026 Império Concretos Exclusivos</footer>
+
+    <script>
+        function filterSelection(c, btn) {
+            var x = document.getElementsByClassName("item");
+            if (c == "all") c = "";
+            var btns = document.getElementById("cat-filters").getElementsByClassName("btn-filter");
+            for (var i = 0; i < btns.length; i++) { btns[i].classList.remove("active"); }
+            btn.classList.add("active");
+            for (var i = 0; i < x.length; i++) {
+                x[i].classList.add("hide");
+                if (x[i].className.indexOf(c) > -1) x[i].classList.remove("hide");
+            }
+        }
+        function filterColor(color, btn) {
+            var x = document.getElementsByClassName("item");
+            var btns = document.getElementById("style-filters").getElementsByClassName("btn-filter");
+            for (var i = 0; i < btns.length; i++) { btns[i].classList.remove("active"); }
+            btn.classList.add("active");
+            for (var i = 0; i < x.length; i++) {
+                x[i].classList.add("hide");
+                if (color === "all" || (x[i].getAttribute("data-color") && x[i].getAttribute("data-color").indexOf(color) > -1)) {
+                    x[i].classList.remove("hide");
+                }
+            }
+        }
+    </script>
+</body>
+</html>
