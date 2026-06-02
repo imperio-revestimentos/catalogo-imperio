@@ -85,12 +85,11 @@
             <button class="btn-filter" onclick="filterSelection('rockface', this)">Rock Face</button>
             <button class="btn-filter" onclick="filterSelection('patagonia', this)">Série Patagônia</button>
         </div>
-        <span class="filter-label">Estilo / Cor</span>
+        <span class="filter-label">Estilo</span>
         <div class="filter-group" id="style-filters">
-            <button class="btn-filter active" onclick="filterColor('all', this)">Todas Cores</button>
-            <button class="btn-filter" onclick="filterColor('cinza', this)">Cinza</button>
+            <button class="btn-filter active" onclick="filterColor('all', this)">Tudo</button>
+            <button class="btn-filter" onclick="filterColor('ralo oculto', this)">Ralo Oculto</button>
             <button class="btn-filter" onclick="filterColor('ferrugem', this)">Ferrugem</button>
-            <button class="btn-filter" onclick="filterColor('amadeirado', this)">Amadeirado</button>
             <button class="btn-filter" onclick="filterColor('exotico', this)">Exóticos</button>
         </div>
     </section>
@@ -132,15 +131,15 @@
             </div>
             <div class="card item rockface cinza" data-color="cinza">
                 <div class="card-img" style="background-image: url('imagens/rockface-marrom.jpg.jpeg')"></div>
-                <div class="card-content"><h3>Rock Face Marrom</h3><p>29x10 - Pedras naturais.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+                <div class="card-content"><h3>Rockface Marrom</h3><p>29x10 - Pedras naturais.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
             </div>
             <div class="card item rockface cinza" data-color="cinza">
                 <div class="card-img" style="background-image: url('imagens/rockface-branco.jpg.jpeg')"></div>
-                <div class="card-content"><h3>Rock Face Branco</h3><p>29x10 - Sofisticado.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+                <div class="card-content"><h3>Rockface Branco</h3><p>29x10 - Sofisticado.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
             </div>
             <div class="card item rockface ferrugem" data-color="ferrugem">
                 <div class="card-img" style="background-image: url('imagens/rockface-preto.jpg.jpeg')"></div>
-                <div class="card-content"><h3>Rock Face Oxidado</h3><p>29x10 - Estilo brutalista.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+                <div class="card-content"><h3>Rockface Oxidado</h3><p>29x10 - Estilo brutalista.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
             </div>
             <div class="card item revestimento ferrugem" data-color="ferrugem">
                 <div class="card-img" style="background-image: url('imagens/revestimento-preto.jpg.jpeg')"></div>
@@ -192,29 +191,41 @@
                 <div class="card-img" style="background-image: url('imagens/cuba-retangular.jpg.jpeg')"></div>
                 <div class="card-content"><h3>Cuba Cubic Espresso</h3><p>48x33x12.5 - Design retangular moderno com acabamento amadeirado escuro.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
             </div>
-            <div class="card item cuba" data-color="ralo oculto">
-                <div class="card-img" style="background-image: url('imagens/cuba-retangular.jpg.jpeg')"></div>
-                <div class="card-content"><h3>Cuba Cubic Espresso</h3><p>48x33x12.5 - Design retangular moderno com acabamento amadeirado escuro.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            <div class="card item saboneteira" data-color="saboneteira preta">
+                <div class="card-img" style="background-image: url('imagens/saboneteira-preta.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Saboneteira Preta</h3><p>48x33x12.5 - Design retangular moderno com acabamento escuro.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+            <div class="card item saboneteira" data-color="saboneteira branca">
+                <div class="card-img" style="background-image: url('imagens/saboneteira-branca.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Saboneteira Branca</h3><p>48x33x12.5 - Design retangular moderno com acabamento claro.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+            <div class="card item saboneteira ferrugem" data-color="saboneteira ferrugem">
+                <div class="card-img" style="background-image: url('imagens/saboneteira-rustica.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Saboneteira Rústica</h3><p>48x33x12.5 - Design retangular moderno com acabamento rústico.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+            <div class="card item revestimento ferrugem" data-color="ferrugem verde">
+                <div class="card-img" style="background-image: url('imagens/revestimento-verde-efeito.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Rockface Verde Ferrugem</h3><p>48x33x12.5 - Concreto atemporal.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+            <div class="card item cuba" data-color="preto">
+                <div class="card-img" style="background-image: url('imagens/cuba-retangular-preta.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Cuba Retangular Preta</h3><p>48x33x12.5 - Cuba retangular moderna com acabamento sofisticado escuro.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
+            </div>
+            <div class="card item cuba" data-color="ralo oculto exotico">
+                <div class="card-img" style="background-image: url('imagens/cuba-vede-ralo oculto.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Cuba Verde Ralo Oculto</h3><p>48x33x12.5 - Modelo sem ralo para os minimalistas.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>  
+            </div>
+            <div class="card item cuba" data-color="all">
+                <div class="card-img" style="background-image: url('imagens/cuba-redonda-branca.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Cuba Branca</h3><p>48x33x12.5 - Simples e Belo.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>  
+            </div>
+            <div class="card item cuba" data-color="ralo oculto exotico">
+                <div class="card-img" style="background-image: url('imagens/cuba-preta-retangular-ralo oculto.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Cuba Preta Ralo Oculto</h3><p>48x33x12.5 - Modelo sem ralo para os minimalistas.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>  
             </div>
             <div class="card item cuba" data-color="ralo oculto">
-                <div class="card-img" style="background-image: url('imagens/cuba-retangular.jpg.jpeg')"></div>
-                <div class="card-content"><h3>Cuba Cubic Espresso</h3><p>48x33x12.5 - Design retangular moderno com acabamento amadeirado escuro.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
-            </div>
-            <div class="card item cuba" data-color="ralo oculto">
-                <div class="card-img" style="background-image: url('imagens/cuba-retangular.jpg.jpeg')"></div>
-                <div class="card-content"><h3>Cuba Cubic Espresso</h3><p>48x33x12.5 - Design retangular moderno com acabamento amadeirado escuro.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
-            </div>
-            <div class="card item cuba" data-color="ralo oculto">
-                <div class="card-img" style="background-image: url('imagens/cuba-retangular.jpg.jpeg')"></div>
-                <div class="card-content"><h3>Cuba Cubic Espresso</h3><p>48x33x12.5 - Design retangular moderno com acabamento amadeirado escuro.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
-            </div>
-            <div class="card item cuba" data-color="ralo oculto">
-                <div class="card-img" style="background-image: url('imagens/cuba-retangular.jpg.jpeg')"></div>
-                <div class="card-content"><h3>Cuba Cubic Espresso</h3><p>48x33x12.5 - Design retangular moderno com acabamento amadeirado escuro.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>
-            </div>
-            <div class="card item cuba" data-color="ralo oculto">
-                <div class="card-img" style="background-image: url('imagens/cuba-retangular.jpg.jpeg')"></div>
-                <div class="card-content"><h3>Cuba Cubic Espresso</h3><p>48x33x12.5 - Design retangular moderno com acabamento amadeirado escuro.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>  
+                <div class="card-img" style="background-image: url('imagens/cuba-oval-ralo oculto.jpg.jpeg')"></div>
+                <div class="card-content"><h3>Cuba Oval Ralo Oculto</h3><p>48x33x12.5 - Modelo sem ralo para os minimalistas.</p><a href="https://wa.me/5564999070069" class="btn-whats">CONSULTAR PREÇO</a></div>  
         </div>
     </main>
 
